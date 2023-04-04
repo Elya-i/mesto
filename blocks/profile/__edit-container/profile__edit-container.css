@@ -1,0 +1,11 @@
+.profile__edit-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+@media screen and (max-width: 620px) {
+  .profile__edit-container {
+    gap: 14px;
+  }
+}

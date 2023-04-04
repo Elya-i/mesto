@@ -5,7 +5,7 @@ let jobInput = formElement.querySelector('#job');
 const popupCloseBtn = formElement.querySelector('.popup__close-btn');
 
 
-const user = document.querySelector('.profile__container');
+const user = document.querySelector('.profile__edit-container');
 const editButton = user.querySelector('.profile__edit-btn');
 let userName = user.querySelector('.profile__name');
 let userJob = user.querySelector('.profile__job');

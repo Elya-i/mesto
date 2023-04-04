@@ -2,7 +2,6 @@
   background-color: #000000;
   color: #ffffff;
   margin: 0 auto 0 auto;
-  padding: 0 200px;
   max-width: 880px;
   font-family: 'Inter', Arial, sans-serif;
   -moz-osx-font-smoothing: grayscale;
@@ -11,16 +10,3 @@
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%; 
 }
-
-@media (max-width: 1024px){
-  .page {
-    padding: 0 100px;
-  }
-}
-
-@media (max-width: 620px){
-  .page {
-      padding: 0 19px;
-  }
-}
-
