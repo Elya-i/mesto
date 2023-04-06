@@ -23,7 +23,7 @@
 
 @media (max-width: 520px) {
   .profile__add-btn {
-    width: 100%;
+    width: 282px;
     background-size: 16px 16px;
   }
 }
