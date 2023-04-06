@@ -1,7 +1,5 @@
 .element {
-  max-width: 282px;
-  height: 361px;
+  width: 282px;
   border-radius: 10px;
   overflow: hidden;
-  position: relative;
 }

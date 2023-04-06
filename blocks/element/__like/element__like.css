@@ -3,8 +3,12 @@
   height: 19px;
   cursor: pointer;
   border: none;
-  background-color: rgba(255, 0, 0, 0);
+  background-color: transparent;
   background-image: url(../../../images/like-button.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+
 }
 
 .element__like:hover {

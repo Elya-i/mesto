@@ -4,11 +4,11 @@
   width: 24px;
   height: 24px;
   border: 1px solid #ffffff;
-  box-sizing: border-box;
   background-color: transparent;
   background-image: url(../../../images/profile__edit-button.svg);
   background-repeat: no-repeat;
   background-position: center;
+  background-size: 10px 10px;
   cursor: pointer;
 }
 
@@ -21,5 +21,6 @@
   .profile__edit-btn {
     width: 18px;
     height: 18px;
+    background-size: 7.5px 7.5px;
   }
 }

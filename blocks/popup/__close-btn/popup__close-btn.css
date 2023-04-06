@@ -7,18 +7,22 @@
   border: none;
   background-image: url(../../../images/close-button.svg);
   background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: 0.8s linear;
+  cursor: pointer;
+
 }
 
 .popup__close-btn:hover {
   opacity: 0.6;
-  transition: 0.8 linear;
 }
 
 @media screen and (max-width: 620px) {
   .popup__close-btn {
     width: 20px;
     height: 20px;
-    background-size: contain;
     right: 0;
    }
 }

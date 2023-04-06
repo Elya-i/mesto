@@ -1,20 +1,18 @@
 const popup = document.querySelector('.popup');
-let formElement = popup.querySelector('.popup__container');
-let nameInput = formElement.querySelector('#name');
-let jobInput = formElement.querySelector('#job');
-const popupCloseBtn = formElement.querySelector('.popup__close-btn');
+const formElement = popup.querySelector('.popup__form');
+const nameInput = formElement.querySelector('.popup__input_name');
+const jobInput = formElement.querySelector('.popup__input_job');
+const popupCloseBtn = document.querySelector('.popup__close-btn');
 
-
-const user = document.querySelector('.profile__edit-container');
-const editButton = user.querySelector('.profile__edit-btn');
-let userName = user.querySelector('.profile__name');
-let userJob = user.querySelector('.profile__job');
+const editButton = document.querySelector('.profile__edit-btn');
+const userName = document.querySelector('.profile__name');
+const userJob = document.querySelector('.profile__job');
 
 function openPopup() {
   popup.classList.add('popup_opened');
   // При открытии формы поля «Имя» и «О себе» должны быть заполнены теми значениями, которые отображаются на странице.
   nameInput.value = userName.textContent;
-  jobInput.value = userJob.textContent;
+  jobInput.value = userJob.textContent; 
 }
 
 function closePopup() {
@@ -22,8 +20,7 @@ function closePopup() {
 }
 
 function handleFormSubmit (evt) {
-    evt.preventDefault();
-    console.log(evt);   
+    evt.preventDefault(); 
     // Получить значения полей jobInput и nameInput из свойства value
     let nameInputValue = nameInput.value;
     let jobInputValue = jobInput.value; 

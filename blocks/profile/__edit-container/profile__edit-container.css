@@ -1,11 +1,13 @@
 .profile__edit-container {
   display: flex;
-  flex-direction: column;
-  gap: 16px;
+  justify-content: center;
+  align-items: baseline;
+  gap: 18px;
 }
 
 @media screen and (max-width: 620px) {
   .profile__edit-container {
-    gap: 14px;
+    gap: 10px;
+    margin: 0 auto;
   }
 }
