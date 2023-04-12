@@ -31,60 +31,6 @@
     <!-- Секция ELEMENTS -->
     <section class="elements" aria-label="Карточки с изображениями">
       <ul class="elements__list">
-        <li>
-          <article class="element">
-            <img src="./images/kaliningrad.jpeg" alt="Калининград" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__name">Калининград</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="element">
-            <img src="./images/plyos.jpeg" alt="Плёс" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__name">Плёс</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="element">
-            <img src="./images/gdym-dagestan.jpeg" alt="Гдым" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__name">Гдым</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="element">
-            <img src="./images/vilyuchinsky-volcano.jpeg" alt="Вилючинский вулкан" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__name">Вилючинский вулкан</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="element">
-            <img src="./images/vladimir.jpeg" alt="Владимир" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__name">Владимир</h2>
-              <button type="button" class="element__like"></button>
-            </div>
-          </article>
-        </li>
-        <li>
-          <article class="element">
-            <img src="./images/mys-ptichiy.jpeg" alt="Мыс Птичий" class="element__image">
-            <div class="element__caption">
-              <h2 class="element__name">Мыс Птичий</h2>
-              <button type="button" class="element__like"></button>
-          </div>
-          </article>
-        </li>
        </ul>
     </section>
 
@@ -96,7 +42,7 @@
   </footer>
 
   <!-- POPUP редактирования профиля -->
-  <div class="popup">
+  <div class="popup popup_edit-profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
       <button type="button" class="popup__close-btn"></button>
@@ -107,6 +53,44 @@
       </form>
     </div>
   </div>
+
+  <!-- Форма добавления новой карточки -->
+  <div class="popup popup_card">
+    <div class="popup__container">
+      <h2 class="popup__title">Новое место</h2>
+      <button type="button" class="popup__close-btn"></button>
+      <form class="popup__form" name="addImageForm" novalidate>
+        <input name="image-name" type="text" placeholder="Название" class="popup__input popup__input_image_name" required>
+        <input name="image-link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_image_link" required>
+      <button type="submit" class="popup__submit-btn">Создать</button>
+      </form>
+    </div>
+
+    <!-- POPUP с изображением карточки на весь экран -->
+    <div class="popup popup_image">
+      <div class="popup__image-container">
+        <button type="button" class="popup__close-btn"></button>
+          <img src="#" alt="изображение" class="popup__image-photo">
+          <p class="popup__image-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Шаблон карточки -->
+  <template id="elements-template">
+    <li class="element">
+      <article>
+        <img src="#" alt="#" class="element__image">
+        <button type="button" class="element__delete-btn"></button>
+        <div class="element__caption">
+          <h2 class="element__name"></h2>
+          <div class="element__like">
+            <button type="button" class="element__like-btn"></button>
+          </div>
+        </div>
+      </article>
+    </li>
+  </template>
 
   <script src="./scripts/index.js" defer></script>
 </body>
