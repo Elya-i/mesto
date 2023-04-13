@@ -36,6 +36,12 @@ profileEditButton.addEventListener('click', openEditProfile);
 profileCloseButton.addEventListener('click', closeEditProfile);
 profileForm.addEventListener('submit', handleFormSubmit); 
 
+// Открытие изображения карточки на весь экран
+const popupOpenImage = document.querySelector('.popup_image');
+const imageCloseButton = document.querySelector('.popup__close-btn');
+const popupImagePhoto = document.querySelector('.popup__image-photo');
+const popupImageCaption = document.querySelector('.popup__image-caption');
+
 // Добавление исходных 6 карточек из коробки
 const elementsContainer = document.querySelector('.elements__list');
 const elementTemplate = document.querySelector('#element-template').content;
@@ -50,7 +56,7 @@ const initialCards = [
 ]
 
 initialCards.forEach((item) => {
-  const initialCard = getCard(item);
+  const initialCard = createCard(item);
   renderCard(initialCard, elementsContainer);
 });
 
@@ -74,7 +80,7 @@ function deleteCard(event) {
   event.target.closest('.element').remove();
 }
 
-function getCard(item) {
+function createCard(item) {
   const card = elementTemplate.cloneNode(true);
   card.querySelector('.element__name').textContent = item.name;
   card.querySelector('.element__image').src = item.link;
@@ -84,6 +90,39 @@ function getCard(item) {
   return card;
 }
 
-function renderCard(card, container) {
-  container.prepend(card);
+function renderCard(card, elementsContainer) {
+  elementsContainer.append(card);
 }
+
+// Popup добавления новой карточки
+const popupNewCard = document.querySelector('.popup-add-card');
+const cardForm = popupNewCard.querySelector('.popup__form');
+const newCardAddButton = document.querySelector('.profile__add-btn');
+const newCardCloseButton = document.querySelector('.new-card-close-btn');
+const newCardSubmitButton = document.querySelector('.popup__submit-btn');
+const cardInputName = document.querySelector('.popup__input_image_name');
+const cardInputLink = document.querySelector('.popup__input_image_link');
+
+function editNewCard(event) {
+  event.preventDefault();
+  popupNewCard.classList.add('popup_opened');
+}
+
+function closeNewCardForm() {
+  popupNewCard.classList.remove('popup_opened');
+  cardInputName.value = '';
+  cardInputLink.value = '';
+}
+
+function addNewCard(event) {
+  event.preventDefault();
+  const cardData = {name: cardInputName.value, link: cardInputLink.value};
+  const newCard = createCard(cardData);
+  elementsContainer.prepend(newCard);
+  closeNewCardForm();
+}
+
+newCardAddButton.addEventListener('click', editNewCard);
+newCardSubmitButton.addEventListener('click', addNewCard);
+newCardCloseButton.addEventListener('click', closeNewCardForm);
+cardForm.addEventListener('submit', addNewCard);
