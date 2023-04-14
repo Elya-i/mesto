@@ -49,12 +49,12 @@
       <form class="popup__form" name="profileEditForm" novalidate>
         <input name="name" type="text" placeholder="Имя" class="popup__input popup__input_profile_name" required>
         <input name="job" type="text" placeholder="О себе" class="popup__input popup__input_profile_about" required>
-      <button type="submit" class="popup__submit-btn">Сохранить</button>
+      <button type="submit" class="popup__submit-btn edit-profile-submit-btn">Сохранить</button>
       </form>
     </div>
   </div>
 
-  <!-- Форма добавления новой карточки -->
+  <!-- Popup добавления новой карточки -->
   <div class="popup popup-add-card">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
@@ -62,17 +62,17 @@
       <form class="popup__form" name="addImageForm" novalidate>
         <input name="image-name" type="text" placeholder="Название" class="popup__input popup__input_image_name" required>
         <input name="image-link" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_image_link" required>
-      <button type="submit" class="popup__submit-btn">Создать</button>
+      <button type="submit" class="popup__submit-btn new-card-submit-btn">Создать</button>
       </form>
     </div>
+  </div>
 
-    <!-- POPUP с изображением карточки на весь экран -->
-    <div class="popup popup_image">
-      <div class="popup__image-container">
-        <button type="button" class="popup__close-btn"></button>
-          <img src="#" alt="изображение" class="popup__image-photo">
-          <p class="popup__image-caption"></p>
-      </div>
+  <!-- Popup с изображением карточки на весь экран -->
+  <div class="popup popup_image">
+    <div class="popup__image-container">
+      <button type="button" class="popup__close-btn image-close-btn"></button>
+      <img src="#" alt="изображение" class="popup__image-photo">
+      <p class="popup__image-caption"></p>
     </div>
   </div>
 
