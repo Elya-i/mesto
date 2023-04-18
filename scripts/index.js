@@ -38,8 +38,8 @@ const closePopup = (popup) => {
 /** Закрытие всех Popup */
 popupCloseButtonList.forEach((item) => {
   item.addEventListener('click', (event) => {
-    const allPopupClose = event.target.closest('.popup');
-    closePopup(allPopupClose);
+    const currentPopupClose = event.target.closest('.popup');
+    closePopup(currentPopupClose);
   });
 });
 
@@ -77,17 +77,17 @@ const createCard = (item) => {
     popupImagePhoto.alt = item.alt;
     popupImageCaption.textContent = item.name;
     openPopup(popupOpenImage);
-})
+});
 
   /** Изменение состояния like после клика */
   cardElement.querySelector('.element__like-btn').addEventListener('click', (event) => {
       event.target.classList.toggle('element__like-btn_active');
-    })
+    });
 
   /** Удаление карточки при клике на иконку */
   cardElement.querySelector('.element__delete-btn').addEventListener('click', (event) => {
       event.target.closest('.element').remove();
-    })
+    });
   
   return cardElement;
 };
