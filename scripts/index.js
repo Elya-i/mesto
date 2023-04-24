@@ -23,25 +23,48 @@ const newCardAddButton = document.querySelector('.profile__add-btn');
 const cardInputName = document.querySelector('.popup__input_image_name');
 const cardInputLink = document.querySelector('.popup__input_image_link');
 
-/** Кнопка закрытия Popup */
+/** Список всех кнопок закрытия Popup */
 const popupCloseButtonList = document.querySelectorAll('.popup__close-btn'); 
 
-/** Функционал открытия/закрытия popup */
+/** Список всех Popup для закрытия кликом на Overlay и нажатием на Esc */
+const popupCloseList = document.querySelectorAll('.popup');  
+
+/** Функционал открытия/закрытия Popup */
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
+  document.addEventListener('keydown', popupCloseByEscKey);
 }
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', popupCloseByEscKey);
 }
 
-/** Закрытие всех Popup */
+/** Добавление обработчика события для закрытия всех Popup */
 popupCloseButtonList.forEach((item) => {
   item.addEventListener('click', (event) => {
-    const currentPopupClose = event.target.closest('.popup');
-    closePopup(currentPopupClose);
+    const currentPopup = event.target.closest('.popup');
+    closePopup(currentPopup);
   });
 });
+
+/** Добавление обработчика события для закрытия всех Popup при нажатии на Overlay */
+popupCloseList.forEach((item) => {
+  item.addEventListener('click', (event) => {
+    if (event.target === event.currentTarget) {
+      closePopup(event.currentTarget);
+    }
+  })
+});
+
+/** Функция закрытия Popup нажатием на клавишу Esc */
+const popupCloseByEscKey = (evt) => {
+  if (evt.key === 'Escape'){
+    popupCloseList.forEach((popup) => {
+      closePopup(popup);
+    })
+  }
+}
 
 profileEditButton.addEventListener('click', () => {
   /** При открытии формы поля «Имя» и «О себе» должны быть заполнены теми значениями, которые отображаются на странице. */
