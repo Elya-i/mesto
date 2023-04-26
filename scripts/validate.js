@@ -35,13 +35,13 @@ function hasInvalidInput(inputList) {
   });
 }
 
-function toggleButtonState(inputList, button, inactiveButtonClass) {
+function toggleButtonState(inputList, buttonElement, inactiveButtonClass) {
   if (hasInvalidInput(inputList)) {
-    button.classList.add(inactiveButtonClass);
-    button.setAttribute('disabled', true);
+    buttonElement.classList.add(inactiveButtonClass);
+    buttonElement.setAttribute('disabled', true);
   } else {
-    button.classList.remove(inactiveButtonClass);
-    button.removeAttribute('disabled');
+    buttonElement.classList.remove(inactiveButtonClass);
+    buttonElement.removeAttribute('disabled');
   }
 }
 

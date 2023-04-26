@@ -7,8 +7,8 @@
   white-space: nowrap;
   text-overflow: ellipsis;
   overflow: hidden;
-  width: 336px;
   text-align: start;
+  flex-basis: 336px;
 }
 
 @media screen and (max-width: 620px) {

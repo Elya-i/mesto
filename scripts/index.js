@@ -1,3 +1,11 @@
+/** Объект валидации */
+const validationItem = {
+  submitButtonSelector: '.popup__button',
+  inactiveButtonClass: 'popup__button_disabled',
+  inputSelector: '.popup__input',
+  inputErrorClass: 'popup__input_type_error',
+}
+
 /** Popup редактирования профиля */
 const popupEditProfile = document.querySelector('.popup_type_profile');
 const profileForm = popupEditProfile.querySelector('.popup__form');
@@ -32,12 +40,12 @@ const popupCloseList = document.querySelectorAll('.popup');
 /** Функционал открытия/закрытия Popup */
 const openPopup = (popup) => {
   popup.classList.add('popup_opened');
-  document.addEventListener('keydown', popupCloseByEscKey);
+  document.addEventListener('keydown', closePopupByEscape);
 }
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keydown', popupCloseByEscKey);
+  document.removeEventListener('keydown', closePopupByEscape);
 }
 
 /** Добавление обработчика события для закрытия всех Popup */
@@ -58,12 +66,22 @@ popupCloseList.forEach((item) => {
 });
 
 /** Функция закрытия Popup нажатием на клавишу Esc */
-const popupCloseByEscKey = (evt) => {
+const closePopupByEscape = (evt) => {
   if (evt.key === 'Escape'){
     popupCloseList.forEach((popup) => {
       closePopup(popup);
     })
   }
+}
+
+/** Функция деактивации кнопки Submit для Popup добавления новой карточки */
+const disableSubmitButton = (objectValidation) => {
+  const submitButton = document.querySelectorAll(objectValidation.submitButtonSelector);
+
+  submitButton.forEach((buttonElement) => {
+    buttonElement.classList.add(objectValidation.inactiveButtonClass);
+    buttonElement.setAttribute('disabled', '');
+  });
 }
 
 profileEditButton.addEventListener('click', () => {
@@ -125,6 +143,7 @@ newCardAddButton.addEventListener('click', () => {
   cardInputName.value = '';
   cardInputLink.value = '';
   openPopup(popupNewCard);
+  disableSubmitButton(validationItem);
 });
 
 newCardForm.addEventListener('submit', (event) => {
