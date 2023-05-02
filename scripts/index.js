@@ -1,5 +1,5 @@
 /** Объект валидации */
-const validationItem = {
+const validationConfig = {
   submitButtonSelector: '.popup__button',
   inactiveButtonClass: 'popup__button_disabled',
   inputSelector: '.popup__input',
@@ -74,16 +74,6 @@ const closePopupByEscape = (evt) => {
   }
 }
 
-/** Функция деактивации кнопки Submit для Popup добавления новой карточки */
-const disableSubmitButton = (objectValidation) => {
-  const submitButton = document.querySelectorAll(objectValidation.submitButtonSelector);
-
-  submitButton.forEach((buttonElement) => {
-    buttonElement.classList.add(objectValidation.inactiveButtonClass);
-    buttonElement.setAttribute('disabled', '');
-  });
-}
-
 profileEditButton.addEventListener('click', () => {
   /** При открытии формы поля «Имя» и «О себе» должны быть заполнены теми значениями, которые отображаются на странице. */
   nameInput.value = userName.textContent;
@@ -143,7 +133,15 @@ newCardAddButton.addEventListener('click', () => {
   cardInputName.value = '';
   cardInputLink.value = '';
   openPopup(popupNewCard);
-  disableSubmitButton(validationItem);
+  /** Функция деактивации кнопки Submit*/
+  const disableSubmitButton = (validationConfig) => {
+    const submitButton = document.querySelectorAll(validationConfig.submitButtonSelector);
+    submitButton.forEach((buttonElement) => {
+      buttonElement.classList.add(validationConfig.inactiveButtonClass);
+      buttonElement.disabled = true;
+    });
+  }
+  disableSubmitButton(validationConfig);
 });
 
 newCardForm.addEventListener('submit', (event) => {
