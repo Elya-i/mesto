@@ -19,6 +19,12 @@
 3. Закрытие попапа кликом на Overlay
 4. Закрытие попапа нажатием на Esc
 
+## В ходе 7-го спринта:
+1. Произведен рефакторинг кода;
+2. Созданы классы Card и FormValidator;
+3. JS разбит на три модуля
+
+
 ## Рассмотренные технологии:
 
 * Flexbox;
@@ -28,8 +34,10 @@
 * Отзывчивый интерфейс (минимальное разрешение: 320px, максимальное: 1280px);
 * Медиазапросы;
 * Template;
-* Валидация форм посредством JavaScriptl;
+* Валидация форм посредством JavaScript;
 * Document Object Model (DOM);
+* Object-oriented programming (OOP);
+* JavaScript modularization;
 * Git;
 * GitHub
 
