@@ -1,13 +1,6 @@
-import { initialCards } from "./initialCards.js";
-import { Card }from "./card.js"
-
-/** Объект валидации */
-const validationConfig = {
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
-  inputSelector: '.popup__input',
-  inputErrorClass: 'popup__input_type_error',
-}
+import { initialCards, validationConfig } from "./data.js";
+import { Card } from "./card.js";
+import { FormValidator } from "./formValidator.js";
 
 /** Popup редактирования профиля */
 const popupEditProfile = document.querySelector('.popup_type_profile');
@@ -77,16 +70,6 @@ const closePopupByEscape = (evt) => {
   }
 }
 
-/** Функция деактивации кнопки Submit для Popup добавления новой карточки */
-const disableSubmitButton = (validationConfig) => {
-  const submitButton = document.querySelectorAll(validationConfig.submitButtonSelector);
-
-  submitButton.forEach((buttonElement) => {
-    buttonElement.classList.add(validationConfig.inactiveButtonClass);
-    buttonElement.setAttribute('disabled', '');
-  });
-}
-
 /** Создание карточки, like, удаление и открытие изображения в полноэкранном режиме */
 const createCard = (data) => {
   const card = new Card(data, templateSelector, openImage);
@@ -101,7 +84,6 @@ const createCard = (data) => {
     openPopup(popupOpenImage);
 };
 
-
 /** Перебор массива */
 initialCards.forEach((item) => {
   const cardElement = createCard(item);
@@ -113,6 +95,7 @@ profileEditButton.addEventListener('click', () => {
   nameInput.value = userName.textContent;
   jobInput.value = userJob.textContent; 
   openPopup(popupEditProfile);
+  profileFormValidator.resetValidation();
 });
 
 profileForm.addEventListener('submit', (event) => { 
@@ -130,7 +113,7 @@ profileForm.addEventListener('submit', (event) => {
 newCardAddButton.addEventListener('click', () => {
   newCardForm.reset();
   openPopup(popupNewCard);
-  disableSubmitButton(validationConfig);
+  newCardFormValidator.resetValidation();
 });
 
 newCardForm.addEventListener('submit', (event) => {
@@ -140,3 +123,12 @@ newCardForm.addEventListener('submit', (event) => {
   elementsContainer.prepend(cardElement);
   closePopup(popupNewCard);
 });
+
+/** Валидация форм */
+const profileFormValidator = new FormValidator(validationConfig, profileForm);
+profileFormValidator.enableValidation();
+
+const newCardFormValidator = new FormValidator(validationConfig, newCardForm);
+newCardFormValidator.enableValidation();
+
+enableValidation(validationConfig);
