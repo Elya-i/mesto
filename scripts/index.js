@@ -1,6 +1,6 @@
 import { initialCards, validationConfig } from "./data.js";
-import { Card } from "./card.js";
-import { FormValidator } from "./formValidator.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 /** Popup редактирования профиля */
 const popupEditProfile = document.querySelector('.popup_type_profile');
@@ -79,7 +79,7 @@ const createCard = (data) => {
   /** Функция открытия просмотра изображения карточки */
   const openImage = (cardImage) => {
     popupImagePhoto.src = cardImage.link;
-    popupImagePhoto.alt = cardImage.alt;
+    popupImagePhoto.alt = cardImage.name;
     popupImageCaption.textContent = cardImage.name;
     openPopup(popupOpenImage);
 };
@@ -113,15 +113,6 @@ profileForm.addEventListener('submit', (event) => {
 newCardAddButton.addEventListener('click', () => {
   newCardForm.reset();
   openPopup(popupNewCard);
-  /** Функция деактивации кнопки Submit*/
-  const disableSubmitButton = (validationConfig) => {
-    const submitButton = document.querySelectorAll(validationConfig.submitButtonSelector);
-    submitButton.forEach((buttonElement) => {
-      buttonElement.classList.add(validationConfig.inactiveButtonClass);
-      buttonElement.disabled = true;
-    });
-  }
-  disableSubmitButton(validationConfig);
   newCardFormValidator.resetValidation();
 });
 
@@ -139,5 +130,3 @@ profileFormValidator.enableValidation();
 
 const newCardFormValidator = new FormValidator(validationConfig, newCardForm);
 newCardFormValidator.enableValidation();
-
-enableValidation(validationConfig);

@@ -2,7 +2,7 @@ class Card {
   constructor(data, templateSelector, openImage) {
     this._name = data.name;
     this._link = data.link;
-    this._alt = data.alt;
+    this._alt = data.name;
     this._templateSelector = templateSelector;
     this._openImage = openImage;
   };
@@ -35,14 +35,6 @@ class Card {
     this._cardElementImage.addEventListener('click', () => this._openImage({name: this._name, link: this._link, alt: this._alt}));
   };
 
-  _openImage() {
-    popupImageCaption.textContent = this._name;
-    popupImagePhoto.src = this._link;
-    popupImagePhoto.alt = this._alt;
-    
-    openPopup(popupOpenImage);
-  };
-  
   generateCard() {
 
     /** Поиск карточки и ее элементов */
