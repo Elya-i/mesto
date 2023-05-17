@@ -7,7 +7,7 @@ class Section {
 
   /** Метод создания и отрисовки данных на странице */
   renderItems() {
-    this._items.forEach((item)=>this._renderer(item))
+    this._items.forEach((item) => this._renderer(item))
   }
 
   /**  Метод, принимающий DOM-элемент и добавляющий его в контейнер */
