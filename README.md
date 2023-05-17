@@ -41,6 +41,7 @@
 * Document Object Model (DOM);
 * Object-oriented programming (OOP);
 * ES6 классы;
+* npm
 * Webpack
 * Git;
 * GitHub

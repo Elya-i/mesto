@@ -6,10 +6,12 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 
+import "./index.css"
+
 /** Создание карточки, like, удаление и открытие изображения в полноэкранном режиме */
 const createCard = (data) => {
-  const card = new Card(data, templateSelector, handleCardClick);
-  return card.generateCard();
+  const createCardElement = new Card(data, templateSelector, handleCardClick);
+  return createCardElement.generateCard();
 };
 
 const popupOpenImage = new PopupWithImage('.popup_type_image');
@@ -21,10 +23,8 @@ const handleCardClick = (name, link) => {
 };
 
 /** Функция добавления на страницу исходных 6 карточек */
-const section = new Section({ 
-  items: initialCards, renderer: (data) => {
-    const card = new Card (data, templateSelector, handleCardClick);
-    section.addItem(card.generateCard());
+const section = new Section({ items: initialCards, renderer: (data) => {
+    section.addItem(createCard(data));
   }
 }, containerSelector);
 section.renderItems();
@@ -50,8 +50,8 @@ profileEditButton.addEventListener('click', () => {
 
 /** Popup добавления новой карточки */
 const popupNewCard = new PopupWithForm('.popup_type_card', {handleFormSubmit: () => {
-    section.addItem(createCard({ name: cardInputName.value, link: cardInputLink.value }, templateSelector, handleCardClick));
-    popupNewCard.close();
+  section.addItem(createCard({ name: cardInputName.value, link: cardInputLink.value }, templateSelector, handleCardClick));
+  popupNewCard.close();
   }
 });
 popupNewCard.setEventListeners();
