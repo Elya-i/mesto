@@ -16,4 +16,16 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 }
 
-export { initialCards, validationConfig };
+/** Popup редактирования профиля */
+const profileEditButton = document.querySelector('.profile__edit-btn');
+
+/** Добавление исходных 6 карточек из "коробки" */
+const templateSelector = '#element-template';
+const containerSelector = '.elements__list'; 
+
+/** Popup добавления новой карточки */
+const newCardAddButton = document.querySelector('.profile__add-btn');
+const cardInputName = document.querySelector('.popup__input_image_name');
+const cardInputLink = document.querySelector('.popup__input_image_link');
+
+export { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton, cardInputName, cardInputLink };
