@@ -24,6 +24,9 @@
 2. Созданы классы Card и FormValidator;
 3. JS разбит на три модуля
 
+## В ходе текущего 8-го спринта: 
+1. Проведен рефакторинг JavaScript файлов. Созданы ещё несколько классов и настроена связь между ними. 
+2. Выполнена настройка сборки проекта Webpack.
 
 ## Рассмотренные технологии:
 
@@ -37,7 +40,8 @@
 * Валидация форм посредством JavaScript;
 * Document Object Model (DOM);
 * Object-oriented programming (OOP);
-* JavaScript modularization;
+* ES6 классы;
+* Webpack
 * Git;
 * GitHub
 

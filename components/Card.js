@@ -1,10 +1,10 @@
 class Card {
-  constructor(data, templateSelector, openImage) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
     this._templateSelector = templateSelector;
-    this._openImage = openImage;
+    this._handleCardClick = handleCardClick;
   };
 
   /** Получение шаблона */
@@ -32,7 +32,7 @@ class Card {
   _setEventListeners() {
     this._cardElementLike.addEventListener('click', this._like);
     this._cardElementDelete.addEventListener('click', () => this._delete());
-    this._cardElementImage.addEventListener('click', () => this._openImage({name: this._name, link: this._link, alt: this._alt}));
+    this._cardElementImage.addEventListener('click', () => this._handleCardClick(this._name, this._link, this._alt)); 
   };
 
   generateCard() {
