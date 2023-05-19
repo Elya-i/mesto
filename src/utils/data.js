@@ -28,4 +28,4 @@ const newCardAddButton = document.querySelector('.profile__add-btn');
 const cardInputName = document.querySelector('.popup__input_image_name');
 const cardInputLink = document.querySelector('.popup__input_image_link');
 
-export { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton, cardInputName, cardInputLink };
+export { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton };

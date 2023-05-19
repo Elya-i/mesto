@@ -1,4 +1,4 @@
-import { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector,newCardAddButton, cardInputName, cardInputLink } from "../utils/data.js";
+import { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector,newCardAddButton } from "../utils/data.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -41,16 +41,14 @@ const popupEditProfile = new PopupWithForm('.popup_type_profile', {
 popupEditProfile.setEventListeners();
 
 profileEditButton.addEventListener('click', () => {
-  const userInfoInput = userInfo.getUserInfo();
-  document.querySelector('#name-input').value = userInfoInput.name;
-  document.querySelector('#job-input').value = userInfoInput.job;
+  popupEditProfile.setInputValues(userInfo.getUserInfo());
   popupEditProfile.open();
   formValidators['profileEditForm'].resetValidation();
 });
 
 /** Popup добавления новой карточки */
-const popupNewCard = new PopupWithForm('.popup_type_card', {handleFormSubmit: () => {
-  section.addItem(createCard({ name: cardInputName.value, link: cardInputLink.value }, templateSelector, handleCardClick));
+const popupNewCard = new PopupWithForm('.popup_type_card', {handleFormSubmit: (formValues) => {
+  section.addItem(createCard({ name: formValues.imageName, link: formValues.imageLink}));
   popupNewCard.close();
   }
 });

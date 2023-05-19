@@ -17,6 +17,14 @@
   transition: 0.7s linear;
 }
 
+@media screen and (max-width: 768px) {
+  .profile__edit-btn {
+    width: 20px;
+    height: 20px;
+    background-size: 8.5px 8.5px;
+  }
+}
+
 @media screen and (max-width: 620px) {
   .profile__edit-btn {
     width: 18px;
