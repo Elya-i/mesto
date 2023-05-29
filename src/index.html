@@ -59,11 +59,11 @@
   <div class="popup popup_type_card">
     <div class="popup__container">
       <h2 class="popup__title">Новое место</h2>
-      <button type="button" class="popup__close-btn"></button>
+      <button type="button" class="popup__button popup__close-btn"></button>
       <form class="popup__form" name="addImageForm" novalidate>
         <input name="imageName" type="text" placeholder="Название" class="popup__input popup__input_image_name" id="input-image-name" minlength="2" maxlength="30" required>
         <span class="popup__error" id="input-image-name-error"></span>
-        <input name="imageLink" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_image_link" id="input-image-link" required>
+        <input name="imagelink" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_image_link" id="input-image-link" required>
         <span class="popup__error" id="input-image-link-error"></span>
       <button type="submit" class="popup__button popup__button-submit">Создать</button>
       </form>
@@ -73,9 +73,32 @@
   <!-- Popup с изображением карточки на весь экран -->
   <div class="popup popup_type_image">
     <div class="popup__image-container">
-      <button type="button" class="popup__close-btn image-close-btn"></button>
+      <button type="button" class="popup__button popup__close-btn"></button>
       <img src="#" alt="Изображение" class="popup__image-photo">
       <p class="popup__image-caption"></p>
+    </div>
+  </div>
+
+  <!-- POPUP обновления аватара пользователя -->
+  <div class="popup popup_type_avatar">
+    <div class="popup__container">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <button type="button" class="popup__button popup__close-btn"></button>
+      <form class="popup__form" name="updateAvatarForm" novalidate>
+        <input name="avatarlink" type="url" placeholder="Ссылка на аватар" class="popup__input popup__input_avatar_link" id="input-avatar-link" required>
+        <span class="popup__error" id="input-avatar-link-error"></span>
+      <button type="submit" class="popup__button popup__button-submit">Создать</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- POPUP удаления карточки -->
+  <div class="popup popup_type_confirm">
+    <div class="popup__container">
+      <h2 class="popup__title">Вы уверены?</h2>
+      <button type="button" class="popup__close-btn"></button>
+      <button type="submit" class="popup__button popup__button-submit">Да</button>
+      <button type="button" class="popup__button popup__close-btn"></button>
     </div>
   </div>
 
@@ -89,6 +112,7 @@
           <h2 class="element__name"></h2>
           <div class="element__like">
             <button type="button" class="element__like-btn"></button>
+            <span class="element__like-counter"></span>
           </div>
         </div>
       </article>

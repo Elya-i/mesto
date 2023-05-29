@@ -29,7 +29,7 @@ const section = new Section({ items: initialCards, renderer: (data) => {
 }, containerSelector);
 section.renderItems();
 
-// Popup редактирования профиля
+/** Popup редактирования профиля */
 const userInfo = new UserInfo({ userNameSelector: '.profile__name', userJobSelector: '.profile__job'});
 
 const popupEditProfile = new PopupWithForm('.popup_type_profile', {
