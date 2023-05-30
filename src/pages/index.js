@@ -1,12 +1,21 @@
-import { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector,newCardAddButton } from "../utils/data.js";
+import { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton, profileAvatarEditButton, apiConfig } from "../utils/data.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
+import { Api } from "../components/Api.js";
 
 import "./index.css"
+
+const api = new Api(apiConfig);
+
+/** Отобразить карточки с сервера */
+api.getInitialCards()
+.then(data => {
+  section.renderItems(data)
+})
 
 /** Создание карточки, like, удаление и открытие изображения в полноэкранном режиме */
 const createCard = (data) => {
@@ -24,17 +33,21 @@ const handleCardClick = (name, link) => {
 
 /** Функция добавления на страницу исходных 6 карточек */
 const section = new Section({ items: initialCards, renderer: (data) => {
-    section.addItem(createCard(data));
+    section.appendItem(createCard(data));
   }
 }, containerSelector);
-section.renderItems();
+// section.renderItems();
 
 /** Popup редактирования профиля */
-const userInfo = new UserInfo({ userNameSelector: '.profile__name', userJobSelector: '.profile__job'});
+const userInfo = new UserInfo({ 
+  userNameSelector: '.profile__name', 
+  userAboutSelector: '.profile__job',
+  userAvatarSelector: '.profile__avatar',
+});
 
 const popupEditProfile = new PopupWithForm('.popup_type_profile', {
   handleFormSubmit: (data) => {
-    userInfo.setUserInfo({ name: data.name, job: data.job });
+    userInfo.setUserInfo({ name: data.name, about: data.about });
     popupEditProfile.close();
   }
 });
@@ -48,7 +61,7 @@ profileEditButton.addEventListener('click', () => {
 
 /** Popup добавления новой карточки */
 const popupNewCard = new PopupWithForm('.popup_type_card', {handleFormSubmit: (formValues) => {
-  section.addItem(createCard({ name: formValues.imageName, link: formValues.imageLink}));
+  section.prependItem(createCard({ name: formValues.imageName, link: formValues.imageLink}));
   popupNewCard.close();
   }
 });
@@ -57,6 +70,19 @@ popupNewCard.setEventListeners();
 newCardAddButton.addEventListener('click', () => {
   popupNewCard.open();
   formValidators['addImageForm'].resetValidation();
+});
+
+/** Popup обновления аватара пользователя */
+const popupEditAvatar = new PopupWithForm('.popup_type_avatar', {
+  handleFormSubmit: (data) => {
+    userInfo.setUserAvatar(data);
+  }
+});
+popupEditAvatar.setEventListeners();
+
+profileAvatarEditButton.addEventListener('click', () => {
+  popupEditAvatar.open();
+  formValidators['updateAvatarForm'].resetValidation();
 });
 
 /** Валидация форм */

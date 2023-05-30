@@ -11,7 +11,11 @@ class Section {
   }
 
   /**  Метод, принимающий DOM-элемент и добавляющий его в контейнер */
-  addItem(element) {
+  appendItem(element) {
+    this._templateContainer.append(element);
+  }
+
+  prependItem(element) {
     this._templateContainer.prepend(element);
   }
 }

@@ -17,7 +17,10 @@
   <main class="content">
     <!-- Секция PROFILE -->
     <section class="profile">
-      <img src="<%=require('./images/cousteau-avatar.png')%>" alt="Аватар" class="profile__avatar">
+      <div class="profile__avatar-block">
+        <img src="<%=require('./images/cousteau-avatar.png')%>" alt="Аватар" class="profile__avatar">
+        <button type="button" class="profile__avatar-edit-btn"></button>
+      </div>
       <div class="profile__info">
         <div class="profile__edit-container">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -40,7 +43,7 @@
     <p class="footer__copyright">&copy;&nbsp;2023 Mesto Russia</p>
   </footer>
 
-  <!-- POPUP редактирования профиля -->
+  <!-- Popup редактирования профиля -->
   <div class="popup popup_type_profile">
     <div class="popup__container">
       <h2 class="popup__title">Редактировать профиль</h2>
@@ -48,7 +51,7 @@
       <form class="popup__form" name="profileEditForm" novalidate>
         <input name="name" type="text" placeholder="Имя" class="popup__input popup__input_profile_name" id="name-input" minlength="2" maxlength="40" required>
         <span class="popup__error" id="name-input-error" ></span>
-        <input name="job" type="text" placeholder="О себе" class="popup__input popup__input_profile_about" id="job-input"  minlength="2" maxlength="200" required>
+        <input name="about" type="text" placeholder="О себе" class="popup__input popup__input_profile_about" id="job-input"  minlength="2" maxlength="200" required>
         <span class="popup__error" id="job-input-error"></span>
       <button type="submit" class="popup__button popup__button-submit">Сохранить</button>
       </form>
@@ -63,7 +66,7 @@
       <form class="popup__form" name="addImageForm" novalidate>
         <input name="imageName" type="text" placeholder="Название" class="popup__input popup__input_image_name" id="input-image-name" minlength="2" maxlength="30" required>
         <span class="popup__error" id="input-image-name-error"></span>
-        <input name="imagelink" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_image_link" id="input-image-link" required>
+        <input name="imageLink" type="url" placeholder="Ссылка на картинку" class="popup__input popup__input_image_link" id="input-image-link" required>
         <span class="popup__error" id="input-image-link-error"></span>
       <button type="submit" class="popup__button popup__button-submit">Создать</button>
       </form>
@@ -79,20 +82,20 @@
     </div>
   </div>
 
-  <!-- POPUP обновления аватара пользователя -->
+  <!-- Popup обновления аватара пользователя -->
   <div class="popup popup_type_avatar">
     <div class="popup__container">
       <h2 class="popup__title">Обновить аватар</h2>
       <button type="button" class="popup__button popup__close-btn"></button>
       <form class="popup__form" name="updateAvatarForm" novalidate>
-        <input name="avatarlink" type="url" placeholder="Ссылка на аватар" class="popup__input popup__input_avatar_link" id="input-avatar-link" required>
+        <input name="avatarLink" type="url" placeholder="Ссылка на аватар" class="popup__input popup__input_avatar_link" id="input-avatar-link" required>
         <span class="popup__error" id="input-avatar-link-error"></span>
       <button type="submit" class="popup__button popup__button-submit">Создать</button>
       </form>
     </div>
   </div>
 
-  <!-- POPUP удаления карточки -->
+  <!-- Popup удаления карточки -->
   <div class="popup popup_type_confirm">
     <div class="popup__container">
       <h2 class="popup__title">Вы уверены?</h2>

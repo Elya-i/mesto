@@ -16,6 +16,14 @@ const validationConfig = {
   errorClass: 'popup__error_visible'
 }
 
+const apiConfig = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-68',
+  headers: {
+    authorization: '0dc6bfd0-470c-4381-8a8e-7fcf3998b4b1',
+    'Content-Type': "application/json",
+  }
+}
+
 /** Popup редактирования профиля */
 const profileEditButton = document.querySelector('.profile__edit-btn');
 
@@ -28,4 +36,7 @@ const newCardAddButton = document.querySelector('.profile__add-btn');
 const cardInputName = document.querySelector('.popup__input_image_name');
 const cardInputLink = document.querySelector('.popup__input_image_link');
 
-export { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton };
+/** Popup обновления аватара пользователя */
+const profileAvatarEditButton = document.querySelector('.profile__avatar-edit-btn');
+
+export { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton, profileAvatarEditButton, apiConfig };
