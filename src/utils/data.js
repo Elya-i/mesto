@@ -39,4 +39,4 @@ const cardInputLink = document.querySelector('.popup__input_image_link');
 /** Popup обновления аватара пользователя */
 const profileAvatarEditButton = document.querySelector('.profile__avatar-edit-btn');
 
-export { initialCards, validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton, profileAvatarEditButton, apiConfig };
+export { validationConfig, profileEditButton, templateSelector, containerSelector, newCardAddButton, profileAvatarEditButton, apiConfig };
