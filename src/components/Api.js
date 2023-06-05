@@ -34,11 +34,11 @@ class Api {
     })
   }
 
-  sendUserData(name, about) {
+  sendUserData(userData) {
     return fetch(`${this._url}/users/me`, {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({ name: name, about: about })
+      body: JSON.stringify({ name: userData.name, about: userData.about})
     })
       .then(response => { return this._checkServerResponse(response); })
   }
@@ -60,31 +60,22 @@ class Api {
       .then(response => { return this._checkServerResponse(response); })
   }
 
-  updateUserAvatar(avatarLink) {
+  updateUserAvatar(userData) {
     return fetch(`${this._url}/users/me/avatar`, {
       method: 'PATCH',
       headers: this._headers,
-      body: JSON.stringify({ avatar: avatarLink })
+      body: JSON.stringify({ avatar: userData.avatar })
     })
       .then(response => { return this._checkServerResponse(response); })
   }
  
-  like(cardId) {
+  likeCard(cardId, setLike) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: 'PUT',
+      method: setLike ? 'DELETE' : 'PUT',
       headers: this._headers,
     })
       .then(response => { return this._checkServerResponse(response); })
   }
-
-  dislike(cardId) {
-    return fetch(`${this._url}/cards/${cardId}/likes`, {
-      method: 'DELETE',
-      headers: this._headers,
-    })
-      .then(response => { return this._checkServerResponse(response); })
-  }
-
 }
 
 export { Api };

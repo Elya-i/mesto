@@ -12,14 +12,14 @@ class PopupWithForm extends Popup {
 
   /** Метод сбора данных всех полей формы */ 
   _getInputValues() {
-    const formValues = {};
+    this._formValues = {};
     this._inputList.forEach(inputItem => {
-      formValues[inputItem.name] = inputItem.value;
+      this._formValues[inputItem.name] = inputItem.value;
     });
-    return formValues;
+    return this._formValues;
   }
 
-  setInputValues = (data) => {
+  setInputValues(data)  {
     this._inputList.forEach((inputItem) => {
       inputItem.value = data[inputItem.name];
     });
@@ -30,7 +30,7 @@ class PopupWithForm extends Popup {
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
       this._handleFormSubmit(this._getInputValues());
-    });
+    })
   }
 
   close() {

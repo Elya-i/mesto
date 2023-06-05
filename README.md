@@ -50,9 +50,9 @@
 * GitHub
 
 
-## Получение локальной копии репозитория: ``` git clone git@github.com/Elya-i/mesto.git ```
-## Установка зависимостей: ``` npm install ```
-## Прдепросмотр на странице локального сервера ``` npm run dev ```
+Получение локальной копии репозитория: ``` git clone git@github.com/Elya-i/mesto.git ```
+Установка зависимостей: ``` npm install ```
+Предпросмотр на странице локального сервера ``` npm run dev ```
 
 Ознакомиться с проектом можно по ссылке:
 [Mesto](https://elya-i.github.io/mesto/)

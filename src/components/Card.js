@@ -33,8 +33,18 @@ class Card {
 
   deleteCard() {
     this._cardElement.remove();
-    this._element = null;
+    this._cardElement = null;
   };
+
+  setLike() {
+    return this._likes.some((like) => like._id === this._userId)
+  }
+
+  updateLikeStatus(likes) {
+    this._likes = likes;
+    this._cardLikeCounter.textContent  = likes.length;
+    this._cardLikeButton.classList.toggle('element__like-btn_active');
+  }
   
   /** Обработчики событий */
   _setEventListeners() {
@@ -49,19 +59,12 @@ class Card {
     this._cardImage.alt = this._name;
     this._cardLikeCounter.textContent = this._likes.length;
 
-    if (this._likes.length) {
-      this._likes.find(like => {
-        if (like._id === this._userId) {
-          this._cardLikeButton.classList.toggle('element__like-btn_active');
-        }
-      })
+    if (this.setLike()) {
+      this._cardLikeButton.classList.add('element__like-btn_active');
     }
-    else {
-      this._cardLikeCounter.textContent = '0';
-    } 
-
+    
     if (this._ownerId !== this._userId) {
-      this._cardElement.querySelector('.element__delete-btn').classList.toggle('element__delete-btn_disable');
+      this._cardDeleteButton.classList.add('element__delete-btn_disable');;
     }
 
     this._setEventListeners();

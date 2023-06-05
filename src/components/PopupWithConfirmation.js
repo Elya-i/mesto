@@ -8,18 +8,6 @@ class PopupWithConfirmation extends Popup {
     this._submitButtonText = this._submitButton.textContent;
   }
 
-  setEventListeners() {
-    this._formElement.addEventListener('submit', (event) => {
-      event.preventDefault();
-      this._handleConfirmSubmit()
-        .then((result) => this.close(result))
-        .catch((error) => {
-          console.log(error);
-        })
-    });
-    super.setEventListeners();
-  }
-
   handleConfirmSubmit(event) {
     this._handleConfirmSubmit = event;
   }
@@ -30,6 +18,14 @@ class PopupWithConfirmation extends Popup {
 
   hideLoadingText() {
     this._submitButton.textContent = this._submitButtonText;
+  }
+
+  setEventListeners() {
+    super.setEventListeners();
+    this._formElement.addEventListener('submit', (event) => {
+      event.preventDefault();
+      this._handleConfirmSubmit();
+    });
   }
 }
 export { PopupWithConfirmation }; 

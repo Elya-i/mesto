@@ -7,20 +7,18 @@ class UserInfo {
 
   /** Метод, возвращаюший объект с данными пользователя */
   getUserInfo() {
-    this._userInfo = {};
-    this._userInfo.name = this._userName.textContent;
-    this._userInfo.about = this._userAbout.textContent;
-    return this._userInfo;
+    return {
+      name: this._userName.textContent,
+      about: this._userAbout.textContent,
+      avatar: this._userAvatar.src,
+    }
   }
   
   /** Метод, принимающий новые данные пользователя и добавляет их на страницу */ 
-  setUserInfo(name, about) {
+  setUserInfo({ name, about, avatar }) {
     this._userName.textContent = name;
     this._userAbout.textContent = about;
-  }
- 
-  setUserAvatar(avatarLink) {
-    this._userAvatar.src = avatarLink;
+    this._userAvatar.src = avatar;
   }
 }
 
