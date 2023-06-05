@@ -43,12 +43,15 @@ const handleOpenImage = (name, link) => {
 }
 
 const handleLikeCard = (card) => {
-    api.likeCard(card.getCardId(), card.setLike())
-      .then((result) => {
-        card.updateLikeStatus(result.likes)
-        console.log(result)
-      })
-      .catch((error) => console.log(error))
+    if (card.isUserLike()) {
+      api.dislikeCard(card.getCardId())
+        .then((result) => card.updateLikeStatus(result.likes))
+        .catch((error) => console.log(error));
+    } else {
+      api.likeCard(card.getCardId())
+        .then((result) => card.updateLikeStatus(result.likes))
+        .catch((error) => console.log(error));
+    }
 }
 
 /** Popup подвтреждения удаления карточки */
@@ -69,8 +72,8 @@ const handleDeleteCard = (card) => {
   })
 }
 
-const userInfo = new UserInfo({ 
-  userNameSelector: '.profile__name', 
+const userInfo = new UserInfo({
+  userNameSelector: '.profile__name',
   userAboutSelector: '.profile__job',
   userAvatarSelector: '.profile__avatar',
 });
