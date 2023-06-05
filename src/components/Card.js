@@ -74,6 +74,15 @@ class Card {
     this._setEventListeners();
     return this._cardElement;
   }
+
+  isUserLike() {
+    return Boolean(this._likes.find(like => like._id === this._userId));
+  }
+
+  getCardId() {
+    return this._cardId;
+  }
+
 };
 
 export { Card };

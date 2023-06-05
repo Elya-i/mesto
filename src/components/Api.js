@@ -10,7 +10,7 @@ class Api {
     }
     else {
       return Promise.reject(`Ошибка: ${response.status}`)
-    } 
+    }
   };
 
   getCardList() {
@@ -68,7 +68,7 @@ class Api {
     })
       .then(response => { return this._checkServerResponse(response); })
   }
- 
+
   likeCard(cardId) {
     return fetch(`${this._url}/cards/${cardId}/likes`, {
       method: 'PUT',
@@ -84,7 +84,6 @@ class Api {
     })
       .then(response => { return this._checkServerResponse(response); })
   }
-
 }
 
 
