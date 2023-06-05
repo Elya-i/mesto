@@ -86,5 +86,4 @@ class Api {
   }
 }
 
-
 export { Api };

@@ -81,7 +81,7 @@ const userInfo = new UserInfo({
 /** Popup редактирования профиля */
 const popupEditProfile = new PopupWithForm('.popup_type_profile', {
   handleFormSubmit: (data) => {
-    popupEditProfile.showLoadingText();;
+    popupEditProfile.showLoadingText();
     api.sendUserData(data)
       .then((result) => {
         userInfo.setUserInfo(result);
