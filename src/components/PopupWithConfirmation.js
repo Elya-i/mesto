@@ -13,7 +13,7 @@ class PopupWithConfirmation extends Popup {
   }
 
   showLoadingText() {
-    this._submitButton.textContent = "Сохранение...";
+    this._submitButton.textContent = "Удаление...";
   }
 
   hideLoadingText() {
