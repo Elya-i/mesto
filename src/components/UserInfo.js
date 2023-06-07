@@ -11,14 +11,16 @@ class UserInfo {
       name: this._userName.textContent,
       about: this._userAbout.textContent,
       avatar: this._userAvatar.src,
+      userId: this._userId,
     }
   }
   
   /** Метод, принимающий новые данные пользователя и добавляет их на страницу */ 
-  setUserInfo({ name, about, avatar }) {
+  setUserInfo({ name, about, avatar, _id }) {
     this._userName.textContent = name;
     this._userAbout.textContent = about;
     this._userAvatar.src = avatar;
+    this._userId = _id;
   }
 }
 

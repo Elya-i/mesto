@@ -38,12 +38,12 @@ class PopupWithForm extends Popup {
     super.close();
   }
 
-  showLoadingText() {
-    this._submitButton.textContent = "Сохранение...";
-  }
-
-  hideLoadingText() {
-    this._submitButton.textContent = this._submitButtonText;
+  renderLoading(isLoading, loadingText = 'Сохранение...') {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
   }
 }
 

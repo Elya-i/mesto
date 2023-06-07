@@ -20,7 +20,7 @@ Promise.all([api.getUserData(), api.getCardList()])
     userId = userData._id;
     section.renderItems(cardList);
   })
-  .catch((error) => console.log(error))
+  .catch(console.error)
 
 /** Функция добавления на страницу исходных 6 карточек */
 const section = new Section({
@@ -46,11 +46,11 @@ const handleLikeCard = (card) => {
     if (card.isUserLike()) {
       api.dislikeCard(card.getCardId())
         .then((result) => card.updateLikeStatus(result.likes))
-        .catch((error) => console.log(error));
+        .catch(console.error);
     } else {
       api.likeCard(card.getCardId())
         .then((result) => card.updateLikeStatus(result.likes))
-        .catch((error) => console.log(error));
+        .catch(console.error);
     }
 }
 
@@ -61,14 +61,14 @@ popupWithConfirmation.setEventListeners()
 const handleDeleteCard = (card) => {
   popupWithConfirmation.open();
   popupWithConfirmation.handleConfirmSubmit(() => {
-    popupWithConfirmation.showLoadingText();
+    popupWithConfirmation.renderLoading(true);
     api.deleteCard(card.getCardId())
       .then((result) => {
         popupWithConfirmation.close(result);
         card.deleteCard();
       })
-      .catch((error) => console.log(error))
-      .finally(() => popupWithConfirmation.hideLoadingText())
+      .catch(console.error)
+      .finally(() => popupWithConfirmation.renderLoading(false))
   })
 }
 
@@ -81,7 +81,7 @@ const userInfo = new UserInfo({
 /** Popup редактирования профиля */
 const popupEditProfile = new PopupWithForm('.popup_type_profile', {
   handleFormSubmit: (data) => {
-    popupEditProfile.showLoadingText();
+    popupEditProfile.renderLoading(true);
     api.sendUserData(data)
       .then((result) => {
         userInfo.setUserInfo(result);
@@ -91,7 +91,7 @@ const popupEditProfile = new PopupWithForm('.popup_type_profile', {
         console.log(error);
       })
       .finally(() => {
-        popupEditProfile.showLoadingText();
+        popupEditProfile.renderLoading(false);
       })
   }
 })
@@ -105,14 +105,14 @@ profileEditButton.addEventListener('click', () => {
 
 /** Popup добавления новой карточки */
 const popupNewCard = new PopupWithForm('.popup_type_card', { handleFormSubmit: (data) => {
-  popupNewCard.showLoadingText();
+  popupNewCard.renderLoading(true);
   api.postNewCard({ name: data.imageName, link: data.imageLink })
    .then((result) => {
       section.prependItem(createCard(result));
       popupNewCard.close();
     })
     .catch((error) => console.log(error))
-    .finally(() => popupNewCard.hideLoadingText());
+    .finally(() => popupNewCard.renderLoading(false));
   }
 })
 popupNewCard.setEventListeners();
@@ -124,14 +124,14 @@ newCardAddButton.addEventListener('click', () => {
 
 /** Popup обновления аватара пользователя */
 const popupEditAvatar = new PopupWithForm('.popup_type_avatar', { handleFormSubmit: (data) => {
-  popupEditAvatar.showLoadingText();
+  popupEditAvatar.renderLoading(true);
   api.updateUserAvatar(data)
     .then((result) => {
       userInfo.setUserInfo(result)
       popupEditAvatar.close();
     })
     .catch((error) => console.log(error))
-    .finally(() => popupNewCard.hideLoadingText());
+    .finally(() => popupEditAvatar.renderLoading(false));
 }
 })
 popupEditAvatar.setEventListeners();

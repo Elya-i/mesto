@@ -8,16 +8,16 @@ class PopupWithConfirmation extends Popup {
     this._submitButtonText = this._submitButton.textContent;
   }
 
-  handleConfirmSubmit(event) {
-    this._handleConfirmSubmit = event;
+  handleConfirmSubmit(submitHandler) {
+    this._handleConfirmSubmit = submitHandler;
   }
 
-  showLoadingText() {
-    this._submitButton.textContent = "Удаление...";
-  }
-
-  hideLoadingText() {
-    this._submitButton.textContent = this._submitButtonText;
+  renderLoading(isLoading, loadingText = 'Удаление...') {
+    if (isLoading) {
+      this._submitButton.textContent = loadingText;
+    } else {
+      this._submitButton.textContent = this._submitButtonText;
+    }
   }
 
   setEventListeners() {
