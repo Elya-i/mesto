@@ -63,8 +63,8 @@ const handleDeleteCard = (card) => {
   popupWithConfirmation.handleConfirmSubmit(() => {
     popupWithConfirmation.renderLoading(true);
     api.deleteCard(card.getCardId())
-      .then((result) => {
-        popupWithConfirmation.close(result);
+      .then(() => {
+        popupWithConfirmation.close();
         card.deleteCard();
       })
       .catch(console.error)
